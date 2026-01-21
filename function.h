@@ -3,7 +3,6 @@
 #include <fstream>
 using namespace std;
 
-int saldo = 0;
 string kategori;
 void tampilanAwal(){
     cout << "===============================" << endl;
@@ -19,13 +18,17 @@ void tampilanAwal(){
 }
 
 void hitungSaldo(int saldo){
+    int saldoSaatIni = 0;
     ofstream dataFile;
     dataFile.open("saldo.txt");
-    dataFile << saldo;
+    dataFile << saldoSaatIni;
+    saldoSaatIni += saldo;
+    cout << saldoSaatIni << endl;
 }
 
-void simpanKeFile(string jenis, int jumlah, string kategori = ""){
+void simpanKeDatabase(string jenis, int jumlah, string kategori = ""){
     ofstream dataFile;
+    cout << "===============================" << endl;
     dataFile.open("database.txt", ios::app);
         if(jenis == "Pemasukan"){
             dataFile << "Pemasukan:" << jumlah << endl;
@@ -38,16 +41,17 @@ void simpanKeFile(string jenis, int jumlah, string kategori = ""){
 
 void pemasukanSaldo(){
     int masuk;
+    cout << "===============================" << endl;
     cout << "Masukkan Jumlah Pemasukan: ";
     cin >> masuk;
 
-    saldo += masuk;
-    simpanKeFile("Pemasukan", masuk); 
+    simpanKeDatabase("Pemasukan", masuk); 
     hitungSaldo(masuk);
     cout << endl;
 }
 
 void pengeluaranSaldo(){
+    int saldo;
     int keluar;
     ifstream dataFile;
     
@@ -55,6 +59,7 @@ void pengeluaranSaldo(){
     dataFile >> saldo;
     dataFile.close();
 
+    cout << "===============================" << endl;
     cout << "Masukkan Jumlah Pengeluaran: ";
     cin >> keluar;
 
@@ -62,9 +67,7 @@ void pengeluaranSaldo(){
     cin.ignore(); 
     getline(cin, kategori); 
     
-
-    saldo -= keluar;
-    simpanKeFile("Pengeluaran", keluar, kategori);
+    simpanKeDatabase("Pengeluaran", keluar, kategori);
     cout << endl;
     hitungSaldo(saldo -= keluar);
 }
@@ -76,6 +79,7 @@ void cekSaldo(){
     dataFile.open("saldo.txt");
 
     getline(dataFile, saldo);
+    cout << "===============================" << endl;
     cout << "Saldo Anda Saat Ini: " << saldo << endl;
     cout << endl;
 
@@ -84,16 +88,18 @@ void cekSaldo(){
 
 void riwayatTransaksi(){
     ifstream dataFile;
-    string data;
-    string nama;
+    string nama = "";
+    int nomor = 1;
     
     dataFile.open("database.txt");
     
-    getline(dataFile, data);
+    cout << "===============================" << endl;
     while(!dataFile.eof()){
-        dataFile >> nama;
-        cout << nama << " " << endl;
+        if(!nama.empty()){
+        cout << nomor << ". " << nama << " " << endl;
+        nomor++;
+        }
+    getline(dataFile, nama);
     }
-
     dataFile.close();
 } 

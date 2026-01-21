@@ -1,10 +1,7 @@
-Pemasukan:1000
-Pengeluaran:100 (Kategori:Makanan)
-Pemasukan:1000
-Pemasukan:1000
-Pengeluaran:100 (Kategori:Makanan)
-Pengeluaran:200 (Kategori:Minuman)
-Pengeluaran:100 (Kategori:Minuman)
-Pemasukan:1000
-Pengeluaran:100 (Kategori:Makanan)
-Pengeluaran:100 (Kategori:Baju)
+Pemasukan:100
+Pemasukan:77
+Pemasukan:50
+Pemasukan:100
+Pemasukan:100
+Pemasukan:100
+Pemasukan:100
