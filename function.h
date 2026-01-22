@@ -33,7 +33,7 @@ int arusKasMasuk(int arusKasMasuk){
 
     ofstream dataFile;
     dataFile.open("aruskasmasuk.txt");
-    dataFile << arusKasMasuk;
+    dataFile << arusMasuk;
     dataFile.close();
 
     return arusMasuk;
@@ -56,7 +56,7 @@ int arusKasKeluar(int arusKasKeluar){
 
     ofstream dataFile;
     dataFile.open("aruskaskeluar.txt");
-    dataFile << arusKasKeluar;
+    dataFile << arusKeluar;
     dataFile.close();
 
     return arusKeluar;
